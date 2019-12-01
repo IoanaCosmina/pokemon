@@ -8,7 +8,7 @@ const PokemonCard = ({ pokemon, id }) => {
     const { name } = pokemon;
 
     return (
-        <div>
+        <div className="section">
             <img
                 src={`${IMG_ADDRESS}/${id}.png`}
                 alt='pokemon-image'
@@ -18,7 +18,7 @@ const PokemonCard = ({ pokemon, id }) => {
                     objectFit: 'cover'
                 }}
             />
-            <h3>{name}</h3>
+            <h4>{name}</h4>
         </div>
     )
 }

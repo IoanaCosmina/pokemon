@@ -11,17 +11,17 @@ const Pokemon = ({ pokemon, toggleDetails }) => {
             <PokemonCard key={pokemon.name} id={pokemon.id} pokemon={pokemon} />
             {
                 toggleDetails ?
-                    <div>  
+                    <div className="section">  
                         {
                             types.map(t => { typesArray.push(t.type.name) })
                         }
-                        <p>Types: {typesArray.join(", ")}</p>
+                        <p>Types: <strong>{typesArray.join(", ")}</strong></p>
                         {
                             abilities.map(a => { abilitiesArray.push(a.ability.name) })
                         }
-                        <p>Abilities: {abilitiesArray.join(", ")}</p>
-                        <p>Base experience: {base_experience}</p>
-                        <p>Weight: {weight}</p>
+                        <p>Abilities: <strong>{abilitiesArray.join(", ")}</strong></p>
+                        <p>Base experience: <strong>{base_experience}</strong></p>
+                        <p>Weight: <strong>{weight}</strong></p>
                     </div>
                     :
                     <div></div>

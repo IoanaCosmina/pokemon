@@ -43,18 +43,20 @@ class App extends Component {
         const text = this.state.toggleDetails ? "Hide details" : "Show details";
         return (
             <div>
-                <h2>Pokemon Database</h2>
+                <h1>Pokemon Database</h1>
                 <Search searchPokemon={this.searchPokemon} clearResult={this.clearResult} />
                 {
                     this.state.search == "noResult" ?
                         <div>
-                            No pokemon to display
+                            <div className="message message--warning">
+                                This Pokemon escaped from our database. Please try a different name.
                             </div>
+                        </div>
                         :
                         (this.state.search == "resultFound" ?
                             <div>
                                 <Pokemon pokemon={this.state.pokemon} toggleDetails={this.state.toggleDetails} />
-                                <button onClick={this.toggleView}>{text}</button>
+                                <button className="button button--small" onClick={this.toggleView}>{text}</button>
                             </div>
                             :
                             ""
@@ -62,13 +64,15 @@ class App extends Component {
                 }
                 <hr />
                 <h2>Random Pokemons</h2>
-                {
-                    this.state.pokemonArray.map(pokemon =>
-                        (<PokemonCard
-                            key={pokemon.name}
-                            id={this.getIdFromUrl(pokemon.url)}
-                            pokemon={pokemon} />))
-                }
+                <div className="container">
+                    {
+                        this.state.pokemonArray.map(pokemon =>
+                            (<PokemonCard
+                                key={pokemon.name}
+                                id={this.getIdFromUrl(pokemon.url)}
+                                pokemon={pokemon} />))
+                    }
+                </div>
             </div>
         )
     }

@@ -4,7 +4,7 @@ class Search extends Component {
     state = { pokemonQuery: '' };
     
     updatePokemonQuery = event => {;
-        this.setState({ pokemonQuery: event.target.value });
+        this.setState({ pokemonQuery: event.target.value.toLowerCase() });
     }
 
     handleKeyPress = event => {
@@ -28,14 +28,14 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
+            <div className="search">
                 <input
                     id="searchField"
                     onChange={this.updatePokemonQuery}
                     onKeyPress={this.handleKeyPress}
                     placeholder="Search for a Pokemon" />
-                <button onClick={this.searchPokemon}>Search</button>
-                <button onClick={this.handleClear}>Clear</button>
+                <button className="button button--search" onClick={this.searchPokemon}>Search</button>
+                <button className="button button--danger" onClick={this.handleClear}>Clear</button>
             </div>
         )
     }
