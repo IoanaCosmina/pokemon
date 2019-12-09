@@ -5,11 +5,15 @@ import PokemonCard from './PokemonCard';
 
 const API_ADDRESS = 'https://pokeapi.co/api/v2';
 
+const EMPTY_SEARCH = "empty";
+const NO_RESULT_SEARCH = "noResult";
+const RESULT_FOUND_SEARCH = "resultFound";
+
 class App extends Component {
-    state = { pokemon: null, pokemonArray: [], toggleDetails: false, search: "empty" };
+    state = { pokemon: null, pokemonArray: [], toggleDetails: false, search: EMPTY_SEARCH };
 
     componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon/')
+        fetch(`${API_ADDRESS}/pokemon/`)
             .then(response => response.json())
             .then(json => this.setState({ pokemonArray: json.results }))
             .catch(error => alert(error.message));
@@ -19,10 +23,10 @@ class App extends Component {
         fetch(`${API_ADDRESS}/pokemon/${pokemonQuery}`)
             .then(response => response.json())
             .then(json => {
-                this.setState({ pokemon: json, search: "resultFound", toggleDetails: false });
+                this.setState({ pokemon: json, search: RESULT_FOUND_SEARCH, toggleDetails: false });
             })
             .catch(error => {
-                this.setState({ pokemon: null, search: "noResult" });
+                this.setState({ pokemon: null, search: NO_RESULT_SEARCH });
                 console.log(error.message);
             });
     }
@@ -36,27 +40,34 @@ class App extends Component {
     }
 
     clearResult = () => {
-        this.setState({ search: "empty" });
+        this.setState({ search: EMPTY_SEARCH });
+    }
+
+    handlePokemonClick = name => {
+        this.searchPokemon(name);
     }
 
     render() {
-        const text = this.state.toggleDetails ? "Hide details" : "Show details";
+        const buttonText = this.state.toggleDetails ? "Hide details" : "Show details";
         return (
             <div>
                 <h1>Pokemon Database</h1>
                 <Search searchPokemon={this.searchPokemon} clearResult={this.clearResult} />
                 {
-                    this.state.search == "noResult" ?
+                    this.state.search == NO_RESULT_SEARCH ?
                         <div>
                             <div className="message message--warning">
                                 This Pokemon escaped from our database. Please try a different name.
                             </div>
                         </div>
                         :
-                        (this.state.search == "resultFound" ?
+                        (this.state.search == RESULT_FOUND_SEARCH ?
                             <div>
-                                <Pokemon pokemon={this.state.pokemon} toggleDetails={this.state.toggleDetails} />
-                                <button className="button button--small" onClick={this.toggleView}>{text}</button>
+                                <Pokemon
+                                    pokemon={this.state.pokemon}
+                                    toggleDetails={this.state.toggleDetails}
+                                    handlePokemonClick={this.handlePokemonClick} />
+                                <button className="button button--small" onClick={this.toggleView}>{buttonText}</button>
                             </div>
                             :
                             ""
@@ -70,7 +81,9 @@ class App extends Component {
                             (<PokemonCard
                                 key={pokemon.name}
                                 id={this.getIdFromUrl(pokemon.url)}
-                                pokemon={pokemon} />))
+                                pokemon={pokemon}
+                                handlePokemonClick={this.handlePokemonClick}
+                            />))
                     }
                 </div>
             </div>

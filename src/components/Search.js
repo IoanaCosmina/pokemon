@@ -19,11 +19,8 @@ class Search extends Component {
 
     clearSearch = () => {
         document.getElementById('searchField').value = '';
-    }
-
-    handleClear = () => {
-        this.clearSearch();
         this.props.clearResult();
+        this.setState({ pokemonQuery: '' });
     }
 
     render() {
@@ -35,7 +32,7 @@ class Search extends Component {
                     onKeyPress={this.handleKeyPress}
                     placeholder="Search for a Pokemon" />
                 <button className="button button--search" onClick={this.searchPokemon}>Search</button>
-                <button className="button button--danger" onClick={this.handleClear}>Clear</button>
+                <button className="button button--danger" onClick={this.clearSearch}>Clear</button>
             </div>
         )
     }

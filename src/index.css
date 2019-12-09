@@ -1,135 +1,141 @@
 @font-face {
-    font-family: RobotoCondensed;
-    src: url(assets/roboto-condensed.light.ttf);
-    font-weight: 800;
-  }
-  
-  @font-face {
-    font-family: EconomicaBold;
-    src: url(assets/economica-bold.ttf);
-  }
-  
-  body {
-    text-align: center;
-    font-size: 20px;
-    padding: 2.5%;
-    font-family: 'RobotoCondensed';
-  }
-  
-  h1, h2, h3, h4, h5 {
-    font-family: 'EconomicaBold';
-  }
+  font-family: RobotoCondensed;
+  src: url(assets/roboto-condensed.light.ttf);
+  font-weight: 800;
+}
 
-  .search {
-    padding: 1.5em 0;
-  }
+@font-face {
+  font-family: EconomicaBold;
+  src: url(assets/economica-bold.ttf);
+}
 
-  .search input {
-    min-width: 200px;
-    width: 35%;
-  }
+body {
+  text-align: center;
+  font-size: 20px;
+  padding: 2.5%;
+  font-family: 'RobotoCondensed';
+}
 
+h1, h2, h3, h4, h5 {
+  font-family: 'EconomicaBold';
+}
+
+.search {
+  padding: 1.5em 0;
+}
+
+.search input {
+  min-width: 200px;
+  width: 35%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5em;
+  margin: 2em auto;
+  max-width: 800px;
+}
+
+@media (max-width: 768px) {
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0.5em;
-    margin: 2em auto;
-    max-width: 800px;
+    grid-template-columns: 1fr 1fr;
   }
+}
 
-  @media (max-width: 768px) { 
-    .container {
-      grid-template-columns: 1fr 1fr;
-    }
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: 1fr;
   }
+}
 
-  @media (max-width: 480px) { 
-    .container {
-      grid-template-columns: 1fr;
-    }
-  }
+.section {
+  padding: 0.5em 0;
+}
 
-  .section {
-    padding: 0.5em 0;
-  }
+.section img {
+  background-color: #eaeff5;
+  border-radius: 10px;
+}
 
-  .section img {
-    background-color: #eaeff5;
-    border-radius: 10px;
-  }
+.section h4 {
+  padding-top: 0.25em;
+  text-transform: capitalize;
+}
 
-  .section h4 {
-    padding-top: 0.25em;
-    text-transform: capitalize;
-  }
+.section p {
+  color: #888888;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
 
-  .section p {
-    color: #888888;
-    margin-bottom: 0.5rem;
-    text-transform: capitalize;
-  }
+.section strong {
+  color: #000000;
+}
 
-  .section strong {
-    color: #000000;
-  }
+.section>div {
+  width: 100px;
+  margin: 0 auto;
+  cursor: pointer;
+}
 
-  /* The message module - end */
+/* The message module - end */
 
-  .message {
-    /* Base Message module */
-    padding: 0.8em 1.2em;
-    border-radius: 0.2em;
-    border: 1px solid #265559;
-    color: #265559;
-    background-color: #e0f0f2;
-    margin: 0 auto;
-    width: fit-content;
-  }
+.message {
+  /* Base Message module */
+  padding: 0.8em 1.2em;
+  border-radius: 0.2em;
+  border: 1px solid #265559;
+  color: #265559;
+  background-color: #e0f0f2;
+  margin: 0 auto;
+  width: fit-content;
+}
 
-  .message--error {
-    /* Error modifier changes message to red. */
-    color: #59262f;
-    border-color: #59262f;
-    background-color: #e8c9cf;
-  }
+.message--error {
+  /* Error modifier changes message to red. */
+  color: #59262f;
+  border-color: #59262f;
+  background-color: #e8c9cf;
+}
 
-  .message--warning {
-    /* Warning modifier changes message to yellow. */
-    color: #594826;
-    border-color: #d2af69;
-    background-color: #f5f4f2;
-  }
+.message--warning {
+  /* Warning modifier changes message to yellow. */
+  color: #594826;
+  border-color: #d2af69;
+  background-color: #f5f4f2;
+}
 
-  /* The message module - end */
+/* The message module - end */
 
-  /* The button module */
+/* The button module */
 
-  .button {
-    /* padding: 0.5em 0.8em;
+.button {
+  /* padding: 0.5em 0.8em;
     border: 1px solid #265559;
     border-radius: 0.2em; */
-    background-color: #f8f9fa;
-    /* font-size: 1rem; */
-  }
-  
-  .button--search {
-    border-color: #b8c8e7;
-    color: #fff;
-    background-color: #2b62c9;
-  }
-  
-  .button--danger {
-    border-color: #e8c9c9;
-    color: #fff;
-    background-color: #df7878;
-  }
-  
-  .button--small {
-    font-size: 0.95rem;
-  }
-  
-  .button--large {
-    font-size: 1.2rem;
-  } 
+  background-color: #f8f9fa;
+  /* font-size: 1rem; */
+}
 
-  /* The button module - end */
+.button--search {
+  border-color: #b8c8e7;
+  color: #fff;
+  background-color: #2b62c9;
+}
+
+.button--danger {
+  border-color: #e8c9c9;
+  color: #fff;
+  background-color: #df7878;
+}
+
+.button--small {
+  font-size: 0.95rem;
+}
+
+.button--large {
+  font-size: 1.2rem;
+}
+
+/* The button module - end */

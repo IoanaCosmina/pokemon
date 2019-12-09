@@ -1,14 +1,14 @@
 import React from 'react';
 import PokemonCard from './PokemonCard';
 
-const Pokemon = ({ pokemon, toggleDetails }) => {
+const Pokemon = ({ pokemon, toggleDetails, handlePokemonClick }) => {
     const { base_experience, abilities, types, weight } = pokemon;
     const abilitiesArray = [];
     const typesArray = [];
 
     return (
         <div>
-            <PokemonCard key={pokemon.name} id={pokemon.id} pokemon={pokemon} />
+            <PokemonCard key={pokemon.name} id={pokemon.id} pokemon={pokemon} handlePokemonClick={handlePokemonClick} />
             {
                 toggleDetails ?
                     <div className="section">  
