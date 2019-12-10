@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search';
 import Pokemon from './Pokemon';
 import PokemonCard from './PokemonCard';
+import NoResult from './NoResult';
 
 const API_ADDRESS = 'https://pokeapi.co/api/v2';
 
@@ -66,32 +67,38 @@ class App extends Component {
         this.loadPokemonSet();
     }
 
-    render() {
+    renderPokemon() {
         const buttonText = this.state.toggleDetails ? "Hide details" : "Show details";
+
+        switch (this.state.search) {
+            case NO_RESULT_SEARCH:
+                return (
+                    <NoResult />
+                );
+            case RESULT_FOUND_SEARCH:
+                return (
+                    <div>
+                        <Pokemon
+                            pokemon={this.state.pokemon}
+                            toggleDetails={this.state.toggleDetails}
+                            handlePokemonClick={this.handlePokemonClick}
+                        />
+                        <button className="button button--small" onClick={this.toggleView}>{buttonText}</button>
+                    </div>
+                );
+            case EMPTY_SEARCH:
+                return null;
+            default:
+                break;
+        }
+    }
+
+    render() {
         return (
             <div>
                 <h1>Pokemon Database</h1>
                 <Search searchPokemon={this.searchPokemon} clearResult={this.clearResult} />
-                {
-                    this.state.search == NO_RESULT_SEARCH ?
-                        <div>
-                            <div className="message message--warning">
-                                This Pokemon escaped from our database. Please try a different name.
-                            </div>
-                        </div>
-                        :
-                        (this.state.search == RESULT_FOUND_SEARCH ?
-                            <div>
-                                <Pokemon
-                                    pokemon={this.state.pokemon}
-                                    toggleDetails={this.state.toggleDetails}
-                                />
-                                <button className="button button--small" onClick={this.toggleView}>{buttonText}</button>
-                            </div>
-                            :
-                            ""
-                        )
-                }
+                { this.renderPokemon() }
                 <hr />
                 <h2>Random Pokemons</h2>
                 <div>
