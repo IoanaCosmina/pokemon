@@ -1,23 +1,36 @@
 @font-face {
-  font-family: RobotoCondensed;
-  src: url(assets/roboto-condensed.light.ttf);
+  font-family: PressStart;
+  src: url(assets/PressStart2P-Regular.ttf);
   font-weight: 800;
 }
 
 @font-face {
-  font-family: EconomicaBold;
-  src: url(assets/economica-bold.ttf);
+  font-family: RobotoCondensed;
+  src: url(assets/roboto-condensed.light.ttf);
+  font-weight: 800;
 }
 
 body {
   text-align: center;
   font-size: 20px;
   padding: 2.5%;
-  font-family: 'RobotoCondensed';
+  font-family: "RobotoCondensed";
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'EconomicaBold';
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "PressStart";
+}
+
+h2 {
+  padding: 1em 0;
+}
+
+h4 {
+  font-size: 1rem;
 }
 
 .search {
@@ -34,7 +47,6 @@ h1, h2, h3, h4, h5 {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 0.5em;
   margin: 2em auto;
-  max-width: 800px;
 }
 
 @media (max-width: 768px) {
@@ -50,16 +62,18 @@ h1, h2, h3, h4, h5 {
 }
 
 .section {
-  padding: 0.5em 0;
+  padding: 1em 0;
 }
 
 .section img {
-  background-color: #eaeff5;
   border-radius: 10px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
 }
 
 .section h4 {
-  padding-top: 0.25em;
+  padding-top: 0.75em;
   text-transform: capitalize;
 }
 
@@ -73,8 +87,8 @@ h1, h2, h3, h4, h5 {
   color: #000000;
 }
 
-.section>div {
-  width: 100px;
+.section > div {
+  width: 200px;
   margin: 0 auto;
   cursor: pointer;
 }
@@ -139,3 +153,17 @@ h1, h2, h3, h4, h5 {
 }
 
 /* The button module - end */
+
+.pokemon-info img {
+  height: 400px;
+  width: 400px;
+}
+
+.pokemon-info h4 {
+  font-size: 1.5rem;
+}
+
+.pokemon-info .section > div {
+  width: 400px;
+  cursor: initial;
+}

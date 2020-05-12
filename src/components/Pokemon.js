@@ -10,7 +10,7 @@ const Pokemon = ({ pokemon, toggleDetails, handlePokemonClick }) => {
     abilities.map(a => { abilitiesArray.push(a.ability.name) });
 
     return (
-        <div>
+        <div className="pokemon-info">
             <PokemonCard key={pokemon.name} id={pokemon.id} pokemon={pokemon} handlePokemonClick={handlePokemonClick} />
             {
                 toggleDetails ?

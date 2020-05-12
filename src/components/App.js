@@ -10,7 +10,7 @@ const EMPTY_SEARCH = "empty";
 const NO_RESULT_SEARCH = "noResult";
 const RESULT_FOUND_SEARCH = "resultFound";
 
-const LIMIT = 15;
+const LIMIT = 9;
 let OFFSET = 0;
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
         fetch(`${API_ADDRESS}/pokemon/${pokemonQuery}`)
             .then(response => response.json())
             .then(json => {
-                this.setState({ pokemon: json, search: RESULT_FOUND_SEARCH, toggleDetails: false });
+                this.setState({ pokemon: json, search: RESULT_FOUND_SEARCH, toggleDetails: true });
             })
             .catch(error => {
                 this.setState({ pokemon: null, search: NO_RESULT_SEARCH });
@@ -98,12 +98,12 @@ class App extends Component {
             <div>
                 <h1>Pokemon Database</h1>
                 <Search searchPokemon={this.searchPokemon} clearResult={this.clearResult} />
-                { this.renderPokemon() }
+                {this.renderPokemon()}
                 <hr />
                 <h2>Random Pokemons</h2>
                 <div>
-                    <button className="button button--small" onClick={this.loadPreviousSet}>Previous</button>
-                    <button className="button button--small" onClick={this.loadNextSet}>Next</button>
+                    <button className="button button--small" onClick={this.loadPreviousSet}>&lt;&lt; Previous</button>
+                    <button className="button button--small" onClick={this.loadNextSet}>Next &gt;&gt;</button>
                 </div>
                 <div className="container">
                     {
